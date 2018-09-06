@@ -1,0 +1,19 @@
+.About {
+  text-align: center;
+  padding-bottom: 120px;
+}
+
+.About-header {
+  font-family: Cochin;
+  height: 30px;
+  padding: 10px;
+}
+
+.About-title {
+  font-size: 1.5em;
+}
+
+.About-intro {
+  font-family: Cochin;
+  font-size: large;
+}
