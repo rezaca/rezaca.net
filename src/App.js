@@ -10,7 +10,7 @@ const Home = () => (
   <div>
     <div className="App-header">
       <h1 className="App-title">Renato Zamudio Candia</h1>
-      <p className="App-intro">Web Developer - Sales Executive</p>
+      <p className="App-intro">Product Obssesed. Business Strategist. Technologist.</p>
     </div>
     <About />
     <Contact />
