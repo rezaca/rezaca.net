@@ -8,10 +8,13 @@ class About extends Component {
         <div className="About-header">
           <h2 className="About-title">About</h2>
           <p className="About-intro">
-            Focused on creating amazing web experiences using React.
+            Product leader specializing in AI and data solutions, with expertise in launching and scaling innovative products.
             <br />
-            I prefer front end work but I'm also highly capable with Node.js,
-            Express and SQL.
+            Skilled at bringing products from 0 to 1 by working closely with business and engineering teams to validate product-market fit.
+            <br />
+            Focused on leveraging AI technologies to process data and deliver significant business outcomes.
+            <br />
+            Track record of successfully launching disruptive products that redefine how technology is used in the industry.
           </p>
         </div>
       </div>

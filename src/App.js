@@ -4,15 +4,31 @@ import './App.css';
 import Curriculum from './components/curriculum.js';
 import About from './components/about.js';
 import Contact from './components/contact.js';
-import PortfolioLink from './components/portfolio.js';
+import ChatBot from './components/chatbot.js';
 
+// Simple Home page with only name, skills, and ChatBot
 const Home = () => (
-  <div>
+  <div className="home-container">
     <div className="App-header">
       <h1 className="App-title">Renato Zamudio Candia</h1>
-      <p className="App-intro">Product Obssesed. Business Strategist. Technologist.</p>
+      <p className="App-intro">Product Leader in AI. Business Strategist. Technology Innovator.</p>
     </div>
+    
+    {/* ChatBot as main feature */}
+    <div className="chatbot-wrapper">
+      <ChatBot />
+    </div>
+  </div>
+);
+
+const AboutPage = () => (
+  <div className="page-container">
     <About />
+  </div>
+);
+
+const ContactPage = () => (
+  <div className="page-container">
     <Contact />
   </div>
 );
@@ -23,20 +39,24 @@ const CurriculumVitae = () => (
   </div>
 );
 
-const Portfolio = () => (
-  <div className="Portfolio-route">
-    <PortfolioLink />
-  </div>
-);
-
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
+        <div className="nav-container">
           <span className="Links">
             <Link to="/" style={{ textDecoration: 'none', color: 'gray' }}>
               Home
+            </Link>
+          </span>
+          <span className="Links">
+            <Link to="/about" style={{ textDecoration: 'none', color: 'gray' }}>
+              About
+            </Link>
+          </span>
+          <span className="Links">
+            <Link to="/contact" style={{ textDecoration: 'none', color: 'gray' }}>
+              Contact
             </Link>
           </span>
           <span className="Links">
@@ -44,17 +64,13 @@ class App extends Component {
               CV
             </Link>
           </span>
-          <span className="Links">
-            <Link
-              to="/Portfolio"
-              style={{ textDecoration: 'none', color: 'gray' }}
-            >
-              Portfolio
-            </Link>
-          </span>
+        </div>
+        
+        <div className="content-container">
           <Route exact path="/" component={Home} />
+          <Route path="/about" component={AboutPage} />
+          <Route path="/contact" component={ContactPage} />
           <Route path="/CV" component={CurriculumVitae} />
-          <Route path="/Portfolio" component={Portfolio} />
         </div>
       </div>
     );

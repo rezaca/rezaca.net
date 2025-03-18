@@ -1,0 +1,209 @@
+/* Simplified Chatbot Component Styles */
+.chatbot-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+}
+
+.chatbot-header {
+  padding: 8px 12px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+}
+
+.chatbot-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: normal;
+  color: #333;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+}
+
+.chatbot-title svg {
+  color: gray;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+  background-color: white;
+}
+
+.message {
+  display: flex;
+  align-items: flex-start;
+  max-width: 85%;
+}
+
+.message.user {
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+.message.bot {
+  margin-right: auto;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+  color: gray;
+}
+
+.message-bubble {
+  padding: 8px 12px;
+  background-color: #f8f8f8;
+  color: #333;
+  border: 1px solid #ddd;
+  line-height: 1.4;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+}
+
+.message.user .message-bubble {
+  background-color: #e5e7eb;
+  color: #333;
+  border: none;
+}
+
+.chatbot-input {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: white;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 14px;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+}
+
+.chat-input:focus {
+  outline: none;
+  border-color: gray;
+}
+
+.chat-send-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-left: 8px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.chat-send-button:hover {
+  background-color: #e0e0e0;
+}
+
+.chat-send-button:disabled {
+  background-color: #f8f8f8;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.chatbot-footer {
+  padding: 5px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #ddd;
+  font-size: 11px;
+  color: gray;
+  text-align: center;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 8px 12px;
+}
+
+.typing-indicator span {
+  height: 6px;
+  width: 6px;
+  background-color: #888;
+  border-radius: 50%;
+  margin: 0 2px;
+  display: inline-block;
+  opacity: 0.6;
+  animation: dot-pulse 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { 
+    opacity: 0.6;
+  }
+  50% { 
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .message {
+    max-width: 90%;
+  }
+  
+  .chatbot-messages {
+    padding: 10px;
+  }
+  
+  .message-bubble {
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chatbot-header,
+  .chatbot-input {
+    padding: 6px 10px;
+  }
+  
+  .chat-input {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+  
+  .chat-send-button {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .chatbot-footer {
+    font-size: 10px;
+  }
+}
