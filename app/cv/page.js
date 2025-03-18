@@ -1,11 +1,45 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import '../../src/App.css';
-import Curriculum from '../../src/components/curriculum.js';
+import dynamic from 'next/dynamic';
+import AlternativeCV from '../alternative-cv';
+
+// Dynamically import the curriculum component for better error handling
+const Curriculum = dynamic(
+  () => import('../../src/components/curriculum.js'),
+  { 
+    ssr: false,
+    loading: () => <div className="cv-loading"><div className="cv-spinner"></div><p>Loading PDF viewer...</p></div>,
+  }
+);
 
 export default function CurriculumPage() {
+  const [pdfError, setPdfError] = useState(false);
+  
+  // Add error handler to catch PDF loading failures
+  useEffect(() => {
+    const handleError = () => {
+      console.log('PDF viewer error detected');
+      setPdfError(true);
+    };
+    
+    window.addEventListener('pdf-error', handleError);
+    
+    // Set a timeout to detect if the PDF viewer is stuck
+    const timeout = setTimeout(() => {
+      const pdfCanvasElement = document.querySelector('.react-pdf__Page__canvas');
+      if (!pdfCanvasElement) {
+        setPdfError(true);
+      }
+    }, 10000); // 10 seconds timeout
+    
+    return () => {
+      window.removeEventListener('pdf-error', handleError);
+      clearTimeout(timeout);
+    };
+  }, []);
   return (
     <div className="App">
       <div className="nav-container">
@@ -33,7 +67,7 @@ export default function CurriculumPage() {
       
       <div className="content-container">
         <div className="CV-route">
-          <Curriculum />
+          {pdfError ? <AlternativeCV /> : <Curriculum />}
         </div>
       </div>
     </div>

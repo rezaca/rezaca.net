@@ -84,7 +84,7 @@ class Curriculum extends Component {
         {error && (
           <div className="cv-error">
             <p>Failed to load the resume. Please try again later.</p>
-            <a href="./resume.pdf" download className="cv-download-button">
+            <a href="/resume.pdf" download className="cv-download-button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -107,7 +107,7 @@ class Curriculum extends Component {
 
         <div className="cv-document">
           <Document
-            file="./resume.pdf"
+            file="/resume.pdf"
             onLoadSuccess={this.onDocumentLoad}
             onLoadError={this.onDocumentError}
             loading=""
@@ -208,7 +208,7 @@ class Curriculum extends Component {
               </button>
             </div>
 
-            <a href="./resume.pdf" download className="cv-download-button">
+            <a href="/resume.pdf" download className="cv-download-button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
