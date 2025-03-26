@@ -8,7 +8,7 @@
   margin: 0 auto;
   padding: 1rem;
   font-family: Cochin, Georgia, 'Times New Roman', serif;
-  height: calc(100vh - 60px);
+  height: 100%;
 }
 
 .cv-loading {
@@ -32,8 +32,12 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .cv-error {
@@ -52,30 +56,37 @@
 
 .cv-document {
   width: 100%;
-  height: auto;
+  flex: 1;
   margin-bottom: 1rem;
   border: 1px solid #eee;
   background-color: white;
   display: flex;
   justify-content: center;
   overflow: auto;
+  min-height: 450px;
 }
 
 .pdf-document {
   width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
 .pdf-page {
   margin: 0;
   box-shadow: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pdf-page canvas {
   margin: 0 auto !important;
   max-width: 100% !important;
   height: auto !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .cv-controls {
@@ -152,20 +163,54 @@
   background-color: #eee;
 }
 
+/* Add responsive styles for mobile devices */
 @media (max-width: 768px) {
   .cv-container {
     padding: 0.5rem;
-    height: calc(100vh - 50px);
+    height: auto;
   }
-  
+
+  .cv-document {
+    min-height: 400px;
+    max-height: 60vh;
+  }
+
   .cv-controls {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
   }
-  
-  .cv-pagination, .cv-zoom {
+
+  .cv-pagination,
+  .cv-zoom {
     width: 100%;
     justify-content: center;
+  }
+
+  .cv-button {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* iPhone-specific fixes */
+@media screen and (max-width: 480px) {
+  .cv-document {
+    min-height: 350px;
+    max-height: 50vh;
+  }
+
+  .pdf-page canvas {
+    max-width: 95% !important;
+  }
+
+  .cv-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .cv-download-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
   }
 }

@@ -4,42 +4,41 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import '../../src/App.css';
 import dynamic from 'next/dynamic';
-import AlternativeCV from '../alternative-cv';
 
 // Dynamically import the curriculum component for better error handling
 const Curriculum = dynamic(
   () => import('../../src/components/curriculum.js'),
   { 
     ssr: false,
-    loading: () => <div className="cv-loading"><div className="cv-spinner"></div><p>Loading PDF viewer...</p></div>,
+    loading: () => (
+      <div className="cv-loading">
+        <div className="cv-spinner"></div>
+        <p>Loading PDF viewer...</p>
+      </div>
+    ),
   }
 );
 
 export default function CurriculumPage() {
-  const [pdfError, setPdfError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   
-  // Add error handler to catch PDF loading failures
   useEffect(() => {
-    const handleError = () => {
-      console.log('PDF viewer error detected');
-      setPdfError(true);
-    };
+    // Set loading state to false after component is mounted
+    setIsLoading(false);
     
-    window.addEventListener('pdf-error', handleError);
-    
-    // Set a timeout to detect if the PDF viewer is stuck
-    const timeout = setTimeout(() => {
-      const pdfCanvasElement = document.querySelector('.react-pdf__Page__canvas');
-      if (!pdfCanvasElement) {
-        setPdfError(true);
+    // Add a delayed check to see if the PDF viewer actually loaded
+    const timer = setTimeout(() => {
+      const canvas = document.querySelector('.react-pdf__Page__canvas');
+      if (!canvas) {
+        console.log('No PDF canvas detected, reloading component');
+        setIsLoading(true);
+        setTimeout(() => setIsLoading(false), 100); // Force a component reload
       }
-    }, 10000); // 10 seconds timeout
+    }, 5000);
     
-    return () => {
-      window.removeEventListener('pdf-error', handleError);
-      clearTimeout(timeout);
-    };
+    return () => clearTimeout(timer);
   }, []);
+
   return (
     <div className="App">
       <div className="nav-container">
@@ -67,7 +66,13 @@ export default function CurriculumPage() {
       
       <div className="content-container">
         <div className="CV-route">
-          {pdfError ? <AlternativeCV /> : <Curriculum />}
+          {!isLoading && <Curriculum />}
+          {isLoading && (
+            <div className="cv-loading">
+              <div className="cv-spinner"></div>
+              <p>Loading PDF viewer...</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

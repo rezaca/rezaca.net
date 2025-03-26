@@ -4,14 +4,18 @@ import React, { Component } from 'react';
 import dynamic from 'next/dynamic';
 import './curriculum.css';
 
+// Define PDF.js worker URL outside the component
+const PDFJS_CDN_URL = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
+
 // Dynamic imports must be used outside of the component in Next.js
 const PDFViewer = dynamic(
   () =>
     import('react-pdf').then((mod) => {
       // Needed to ensure PDF.js works properly with Webpack
-      const { pdfjs } = require('react-pdf');
-      pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
-      return { Document: mod.Document, Page: mod.Page };
+      const { pdfjs } = mod;
+      // Configure the worker source
+      pdfjs.GlobalWorkerOptions.workerSrc = PDFJS_CDN_URL;
+      return mod;
     }),
   { ssr: false },
 );
@@ -30,6 +34,14 @@ class Curriculum extends Component {
       numPages,
       isLoading: false,
     });
+    // Force a re-render if the canvas doesn't appear
+    setTimeout(() => {
+      if (!document.querySelector('.react-pdf__Page__canvas')) {
+        this.forceUpdate();
+      } else {
+        console.log('PDF canvas rendered successfully');
+      }
+    }, 500);
   };
 
   onDocumentError = (error) => {
@@ -38,6 +50,8 @@ class Curriculum extends Component {
       error: true,
       isLoading: false,
     });
+    // Dispatch an error event to the parent component
+    window.dispatchEvent(new CustomEvent('pdf-error', { detail: error }));
   };
 
   nextPage = () => {
@@ -64,12 +78,22 @@ class Curriculum extends Component {
     }));
   };
 
+  componentDidMount() {
+    // Ensure we have access to the correct PDF URL
+    this.pdfUrl = '/resume.pdf';
+  }
+
   render() {
     const { pageNumber, numPages, scale, isLoading, error } = this.state;
-    const { Document, Page } = PDFViewer || {};
+
+    if (!PDFViewer) {
+      return <div className="cv-loading">Loading PDF viewer...</div>;
+    }
+
+    const { Document, Page } = PDFViewer;
 
     if (!Document || !Page) {
-      return <div className="cv-loading">Loading PDF viewer...</div>;
+      return <div className="cv-loading">Loading PDF components...</div>;
     }
 
     return (
@@ -84,7 +108,7 @@ class Curriculum extends Component {
         {error && (
           <div className="cv-error">
             <p>Failed to load the resume. Please try again later.</p>
-            <a href="/resume.pdf" download className="cv-download-button">
+            <a href={this.pdfUrl} download className="cv-download-button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -107,11 +131,15 @@ class Curriculum extends Component {
 
         <div className="cv-document">
           <Document
-            file="/resume.pdf"
+            file={this.pdfUrl}
             onLoadSuccess={this.onDocumentLoad}
             onLoadError={this.onDocumentError}
             loading=""
             className="pdf-document"
+            options={{
+              cMapUrl: 'cmaps/',
+              standardFontDataUrl: 'standard_fonts/',
+            }}
           >
             <Page
               pageNumber={pageNumber}
@@ -119,6 +147,7 @@ class Curriculum extends Component {
               className="pdf-page"
               renderTextLayer={false}
               renderAnnotationLayer={false}
+              canvasBackground="white"
             />
           </Document>
         </div>
@@ -208,7 +237,7 @@ class Curriculum extends Component {
               </button>
             </div>
 
-            <a href="/resume.pdf" download className="cv-download-button">
+            <a href={this.pdfUrl} download className="cv-download-button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

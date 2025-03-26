@@ -12,10 +12,43 @@ const nextConfig = {
     config.resolve.alias.canvas = false;
     config.resolve.alias.encoding = false;
     
+    // Support for PDF files and workers
+    config.module.rules.push({
+      test: /\.(pdf)$/i,
+      type: 'asset/resource',
+    });
+    
     return config;
   },
   experimental: {
     optimizeFonts: true,
+  },
+  // Add static asset handling for PDFs
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/resume.pdf',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/pdf',
+          },
+          {
+            key: 'Content-Disposition',
+            value: 'inline',
+          },
+        ],
+      },
+    ];
   },
 };
 
