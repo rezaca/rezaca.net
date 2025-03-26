@@ -82,6 +82,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 10px;
+  width: 100%;
 }
 
 /* Original header styles */
@@ -172,17 +173,18 @@ body {
 
 @media (max-width: 480px) {
   .App {
-    margin-top: 70px; /* Reduced margin for mobile */
-    height: calc(100vh - 70px);
+    margin-top: 60px; /* Reduced margin for mobile */
+    height: calc(100vh - 60px);
   }
 
   .nav-container {
-    padding: 5px 0;
-    height: 60px; /* Fixed height for mobile navigation */
+    padding: 0;
+    height: 50px; /* Fixed height for mobile navigation */
     display: flex;
     flex-wrap: nowrap; /* Prevent wrapping on small screens */
     justify-content: space-around;
     align-items: center;
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent */
   }
 
   .Links {
@@ -203,11 +205,12 @@ body {
 
   .App-header {
     padding: 10px 10px 0;
+    margin-top: 10px;
   }
 
   .App-title {
     font-size: 1.7em;
-    margin: 0 0 5px;
+    margin: 20px 0 5px;
   }
 
   .App-intro {
@@ -220,21 +223,39 @@ body {
   /* Improve scrolling on mobile */
   .content-container {
     -webkit-overflow-scrolling: touch;
+    padding-top: 15px;
+  }
+
+  /* Override page specific containers */
+  .page-container {
+    height: auto;
+    padding: 20px 10px;
+    margin-top: 10px;
+  }
+
+  .CV-route {
+    height: auto;
+    padding-top: 20px;
   }
 
   /* iPhone-specific adjustments */
   @media screen and (min-device-width: 375px) and (max-device-width: 926px) and (-webkit-min-device-pixel-ratio: 3) {
     .App {
-      margin-top: 70px; /* Consistent with other mobile devices */
+      margin-top: 55px;
     }
 
     .App-title {
       font-size: 1.6em;
-      margin-top: 5px;
+      margin-top: 20px;
     }
 
     .App-intro {
       margin-bottom: 10px;
+    }
+
+    h2,
+    h3 {
+      margin-top: 25px; /* Add space for page headings on mobile */
     }
   }
 }
