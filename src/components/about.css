@@ -1,98 +1,106 @@
-/* About component styling */
+/* Enhanced About Component Styles */
 .About {
-  max-width: 800px;
+  text-align: center;
+  padding: 20px 0 40px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
-  font-family: Cochin, Georgia, 'Times New Roman', serif;
 }
 
 .About-header {
-  text-align: center;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+  height: auto;
+  padding: 10px 20px;
 }
 
 .About-title {
   font-size: 1.8em;
+  font-weight: normal;
   margin-bottom: 20px;
-  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
 }
 
 .About-section {
-  margin-bottom: 24px;
+  margin-bottom: 25px;
+  padding: 0 10px;
 }
 
 .About-subtitle {
-  font-size: 1.3em;
-  margin-bottom: 10px;
-  color: #444;
-  text-align: center;
+  font-size: 1.2em;
+  font-weight: normal;
+  margin-bottom: 12px;
+  color: #555;
 }
 
 .About-intro {
-  font-size: 1.1em;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+  font-size: large;
   line-height: 1.5;
-  margin: 0 0 20px;
-  text-align: center;
-}
-
-.About-skills {
-  padding-left: 20px;
-  margin: 10px 0;
-  line-height: 1.6;
-}
-
-.About-skills li {
-  margin-bottom: 8px;
+  color: #333;
+  margin-bottom: 5px;
 }
 
 .About-text {
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+  font-size: medium;
   line-height: 1.5;
-  text-align: center;
-  margin: 10px 0;
+  color: #333;
+  margin: 0;
 }
 
-/* Responsive adjustments */
+.About-skills {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.About-skills li {
+  background-color: #f8f8f8;
+  border: 1px solid #eee;
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-bottom: 10px;
+  font-size: medium;
+  color: #555;
+  transition: all 0.2s ease;
+}
+
+.About-skills li:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
   .About {
-    padding: 15px;
+    padding: 15px 0 30px;
   }
 
   .About-title {
-    font-size: 1.6em;
-  }
-
-  .About-subtitle {
-    font-size: 1.2em;
-  }
-
-  .About-intro {
-    font-size: 1em;
-  }
-}
-
-@media (max-width: 480px) {
-  .About {
-    padding: 10px;
-  }
-
-  .About-title {
-    font-size: 1.4em;
+    font-size: 1.5em;
     margin-bottom: 15px;
-  }
-
-  .About-subtitle {
-    font-size: 1.1em;
-    margin-bottom: 8px;
+    padding-bottom: 10px;
   }
 
   .About-section {
     margin-bottom: 20px;
   }
 
-  .About-skills {
-    padding-left: 25px;
+  .About-subtitle {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+
+  .About-intro,
+  .About-text {
+    font-size: medium;
   }
 
   .About-skills li {
-    margin-bottom: 6px;
+    font-size: small;
+    padding: 6px 12px;
   }
 }

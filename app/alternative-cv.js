@@ -1,81 +1,28 @@
 "use client";
 
 import React from 'react';
-import '../src/components/alternative-cv.css';
+import Link from 'next/link';
 
-const AlternativeCV = () => {
+export default function AlternativeCV() {
   return (
-    <div className="alternative-cv">
-      <h1 className="cv-heading">Curriculum Vitae</h1>
+    <div className="fallback-cv-container">
+      <h2>Resume Viewer</h2>
+      <p>The PDF viewer is not available at the moment. You can download the resume directly.</p>
       
-      <section className="cv-section">
-        <h2>Renato Zamudio Candia</h2>
-        <p className="cv-subtitle">Product Leader in AI • Business Strategist • Technology Innovator</p>
-      </section>
-      
-      <section className="cv-section">
-        <h3>Professional Experience</h3>
-        <div className="experience">
-          <div className="experience-header">
-            <h4>Director of Product, AI Innovation</h4>
-            <span className="experience-date">2022 - Present</span>
-          </div>
-          <p className="experience-description">
-            Leading AI product strategy and implementation across organization. 
-            Designed and launched innovative AI agents and LLM-based solutions.
-          </p>
-        </div>
-        
-        <div className="experience">
-          <div className="experience-header">
-            <h4>Senior Product Manager</h4>
-            <span className="experience-date">2019 - 2022</span>
-          </div>
-          <p className="experience-description">
-            Developed product strategy and roadmap for data platforms. 
-            Scaled analytics solutions and implemented ML pipelines.
-          </p>
-        </div>
-        
-        <div className="experience">
-          <div className="experience-header">
-            <h4>Product Leader</h4>
-            <span className="experience-date">2016 - 2019</span>
-          </div>
-          <p className="experience-description">
-            Led cross-functional teams in developing and launching products from 0 to 1.
-            Validated product-market fit through customer discovery and iteration.
-          </p>
-        </div>
-      </section>
-      
-      <section className="cv-section">
-        <h3>Core Skills</h3>
-        <div className="skills-container">
-          <div className="skill">AI Product Strategy</div>
-          <div className="skill">LLM & Agent Architecture</div>
-          <div className="skill">Data Platform Design</div>
-          <div className="skill">Product Management</div>
-          <div className="skill">Cross-functional Leadership</div>
-          <div className="skill">Market Validation</div>
-        </div>
-      </section>
-      
-      <section className="cv-section">
-        <h3>Contact</h3>
-        <p className="contact-info">
-          Email: renato@rezaca.net<br/>
-          Phone: 919-803-9049
-        </p>
-      </section>
-      
-      <div className="cv-download">
-        <a href="/Renato_Resume.pdf" download className="download-link">
-          Download PDF Resume
+      <div className="fallback-actions">
+        <a href="/resume.pdf" download className="cv-download-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download Resume
         </a>
+        
+        <Link href="/" className="fallback-home-link">
+          Return to Home
+        </Link>
       </div>
     </div>
   );
-};
-
-export default AlternativeCV;
+}

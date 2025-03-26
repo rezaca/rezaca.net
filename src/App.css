@@ -8,23 +8,14 @@ body {
   line-height: 1.4;
   -webkit-text-size-adjust: 100%;
   touch-action: manipulation;
-  overflow-x: hidden;
-  height: 100%;
-  position: relative;
-}
-
-html {
-  height: 100%;
-  overflow-x: hidden;
 }
 
 .App {
   text-align: center;
   margin-top: 60px; /* Reduced from 80px */
-  min-height: calc(100vh - 60px);
+  height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 /* Navigation styling - based on original */
@@ -53,8 +44,7 @@ html {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: visible;
-  padding: 0 20px;
+  overflow: auto;
 }
 
 /* Home page specific */
@@ -64,6 +54,7 @@ html {
   align-items: center;
   justify-content: flex-start;
   padding-top: 20px;
+  height: 100%;
 }
 
 .chatbot-wrapper {
@@ -79,26 +70,27 @@ html {
 .page-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 20px 10px;
-  overflow: visible;
+  align-items: center;
+  height: calc(100vh - 100px);
+  padding: 10px;
 }
 
 /* CV route */
 .CV-route {
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 10px;
-  overflow: visible;
 }
 
 /* Original header styles */
 .App-header {
   font-family: Cochin, Georgia, 'Times New Roman', serif;
   height: auto;
-  padding: 30px 30px 0;
-  margin-bottom: 20px;
+  padding: 30px;
+  margin-bottom: 0;
 }
 
 .App-title {
@@ -110,6 +102,51 @@ html {
   font-family: Cochin, Georgia, 'Times New Roman', serif;
   font-size: large;
   margin-top: 0;
+}
+
+/* Fallback CV styling */
+.fallback-cv-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+}
+
+.fallback-cv-container h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.fallback-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.cv-download-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 0.9em;
+}
+
+.cv-download-button:hover {
+  background-color: #e0e0e0;
+}
+
+.fallback-home-link {
+  color: gray;
+  text-decoration: underline;
 }
 
 /* Responsive adjustments */
@@ -137,17 +174,12 @@ html {
     font-size: 1.3em;
     margin-bottom: 8px;
   }
-
-  .content-container {
-    padding: 0 15px;
-  }
 }
 
 @media (max-width: 480px) {
   .App {
     margin-top: 60px; /* Reduced margin for iPhone */
-    min-height: calc(100vh - 60px);
-    overflow: hidden;
+    height: calc(100vh - 60px);
   }
 
   .nav-container {
@@ -192,32 +224,9 @@ html {
     padding: 0 15px;
   }
 
-  /* For About page */
-  .About-skills {
-    padding-left: 20px;
-    margin: 15px 0;
-    text-align: left;
-  }
-
-  .About-text {
-    text-align: center;
-    margin: 15px 0;
-  }
-
-  /* For Contact page */
-  .contact-item {
-    margin: 15px 0;
-  }
-
-  /* Completely eliminate any scrolling */
+  /* Improve scrolling on mobile */
   .content-container {
-    overflow: visible;
-    padding: 0 10px;
-  }
-
-  .page-container {
-    overflow: visible;
-    padding: 10px 0;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* iPhone-specific adjustments */
