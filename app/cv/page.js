@@ -16,7 +16,7 @@ const Curriculum = dynamic(
 );
 
 export default function CurriculumPage() {
-  const [pdfError, setPdfError] = useState(false);
+  const [pdfError, setPdfError] = useState(true); // Start with alternative CV by default
   
   // Add error handler to catch PDF loading failures
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function CurriculumPage() {
       if (!pdfCanvasElement) {
         setPdfError(true);
       }
-    }, 10000); // 10 seconds timeout
+    }, 5000); // 5 seconds timeout
     
     return () => {
       window.removeEventListener('pdf-error', handleError);
@@ -67,7 +67,7 @@ export default function CurriculumPage() {
       
       <div className="content-container">
         <div className="CV-route">
-          {pdfError ? <AlternativeCV /> : <Curriculum />}
+          <AlternativeCV />
         </div>
       </div>
     </div>

@@ -1,0 +1,153 @@
+/* Alternative CV styling */
+.alternative-cv {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+  color: #333;
+}
+
+.cv-heading {
+  text-align: center;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cv-section {
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.cv-subtitle {
+  text-align: center;
+  font-size: 1.1em;
+  margin: 10px 0 30px;
+  color: #555;
+}
+
+.experience {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.experience:last-child {
+  border-bottom: none;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+}
+
+.experience-header h4 {
+  margin: 0;
+  font-size: 1.1em;
+  color: #444;
+}
+
+.experience-date {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.experience-description {
+  margin: 8px 0 0;
+  line-height: 1.4;
+  font-size: 0.95em;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.skill {
+  background-color: #f5f5f5;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  color: #444;
+}
+
+.contact-info {
+  line-height: 1.6;
+}
+
+.cv-download {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.download-link {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 0.9em;
+}
+
+.download-link:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .alternative-cv {
+    padding: 15px;
+  }
+
+  .cv-heading {
+    font-size: 1.6em;
+  }
+
+  .experience-header {
+    flex-direction: column;
+  }
+
+  .experience-date {
+    margin-top: 4px;
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 480px) {
+  .alternative-cv {
+    padding: 10px;
+  }
+
+  .cv-heading {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+  }
+
+  .cv-subtitle {
+    font-size: 1em;
+    margin-bottom: 20px;
+  }
+
+  .cv-section {
+    margin-bottom: 20px;
+  }
+
+  .skills-container {
+    gap: 8px;
+  }
+
+  .skill {
+    padding: 6px 10px;
+    font-size: 0.85em;
+  }
+
+  .download-link {
+    padding: 8px 14px;
+  }
+}

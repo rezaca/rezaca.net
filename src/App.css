@@ -8,14 +8,23 @@ body {
   line-height: 1.4;
   -webkit-text-size-adjust: 100%;
   touch-action: manipulation;
+  overflow-x: hidden;
+  height: 100%;
+  position: relative;
+}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
 }
 
 .App {
   text-align: center;
-  margin-top: 80px; /* Original margin from old CSS */
-  height: calc(100vh - 80px);
+  margin-top: 60px; /* Reduced from 80px */
+  min-height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* Navigation styling - based on original */
@@ -30,6 +39,7 @@ body {
   padding: 10px 0;
   z-index: 1000;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: 40px;
 }
 
 .Links {
@@ -43,7 +53,8 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  overflow: visible;
+  padding: 0 20px;
 }
 
 /* Home page specific */
@@ -53,15 +64,13 @@ body {
   align-items: center;
   justify-content: flex-start;
   padding-top: 20px;
-  height: 100%;
-  max-height: calc(100vh - 80px);
 }
 
 .chatbot-wrapper {
   width: 100%;
   max-width: 700px;
   margin: 20px auto;
-  height: calc(100vh - 250px); /* Dynamically adjust height based on viewport */
+  height: 450px; /* Fixed height instead of viewport-based */
   min-height: 300px;
   max-height: 500px;
 }
@@ -70,27 +79,26 @@ body {
 .page-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: calc(100vh - 100px);
-  padding: 10px;
+  align-items: flex-start;
+  padding: 20px 10px;
+  overflow: visible;
 }
 
 /* CV route */
 .CV-route {
-  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 10px;
+  overflow: visible;
 }
 
 /* Original header styles */
 .App-header {
   font-family: Cochin, Georgia, 'Times New Roman', serif;
   height: auto;
-  padding: 30px;
-  margin-bottom: 0;
+  padding: 30px 30px 0;
+  margin-bottom: 20px;
 }
 
 .App-title {
@@ -107,17 +115,21 @@ body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .nav-container {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-around;
   }
 
   .Links {
-    padding: 10px 20px;
+    padding: 0;
     min-width: 60px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .chatbot-wrapper {
-    height: calc(100vh - 230px);
+    height: 400px;
     max-width: 90%;
   }
 
@@ -125,16 +137,21 @@ body {
     font-size: 1.3em;
     margin-bottom: 8px;
   }
+
+  .content-container {
+    padding: 0 15px;
+  }
 }
 
 @media (max-width: 480px) {
   .App {
-    margin-top: 70px; /* Reduced margin for iPhone */
-    height: calc(100vh - 70px);
+    margin-top: 60px; /* Reduced margin for iPhone */
+    min-height: calc(100vh - 60px);
+    overflow: hidden;
   }
 
   .nav-container {
-    padding: 10px 0;
+    padding: 5px 0;
     height: 50px;
     display: flex;
     align-items: center;
@@ -153,43 +170,69 @@ body {
   }
 
   .chatbot-wrapper {
-    height: calc(100vh - 280px);
+    height: 380px;
     min-height: 250px;
     max-width: 95%;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .App-header {
-    padding: 0 10px 10px 10px;
+    padding: 20px 10px 0;
   }
 
   .App-title {
     font-size: 1.7em;
-    margin: 10px 0;
+    margin: 0 0 10px;
   }
 
   .App-intro {
     font-size: medium;
     display: block;
-    margin: 10px 0;
+    margin: 10px 0 20px;
     padding: 0 15px;
   }
 
-  /* Improve scrolling on mobile */
+  /* For About page */
+  .About-skills {
+    padding-left: 20px;
+    margin: 15px 0;
+    text-align: left;
+  }
+
+  .About-text {
+    text-align: center;
+    margin: 15px 0;
+  }
+
+  /* For Contact page */
+  .contact-item {
+    margin: 15px 0;
+  }
+
+  /* Completely eliminate any scrolling */
   .content-container {
-    -webkit-overflow-scrolling: touch;
-    margin-top: 10px;
+    overflow: visible;
+    padding: 0 10px;
+  }
+
+  .page-container {
+    overflow: visible;
+    padding: 10px 0;
   }
 
   /* iPhone-specific adjustments */
-  @media screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+  @media screen and (min-device-width: 375px) and (max-device-width: 926px) and (-webkit-min-device-pixel-ratio: 3) {
     .App {
       margin-top: 60px;
     }
 
     .App-title {
       font-size: 1.6em;
-      margin-top: 30px;
+      margin-top: 10px;
+    }
+
+    .App-intro {
+      margin-bottom: 15px;
     }
   }
 }
