@@ -12,8 +12,8 @@ body {
 
 .App {
   text-align: center;
-  margin-top: 60px; /* Reduced from 80px */
-  height: calc(100vh - 60px);
+  margin-top: 80px; /* Original margin */
+  height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
 }
@@ -30,7 +30,6 @@ body {
   padding: 10px 0;
   z-index: 1000;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  height: 40px;
 }
 
 .Links {
@@ -152,17 +151,12 @@ body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .nav-container {
-    flex-wrap: nowrap;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .Links {
-    padding: 0;
-    min-width: 60px;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 10px 20px;
   }
 
   .chatbot-wrapper {
@@ -178,24 +172,19 @@ body {
 
 @media (max-width: 480px) {
   .App {
-    margin-top: 60px; /* Reduced margin for iPhone */
-    height: calc(100vh - 60px);
+    margin-top: 120px; /* More space for the wrapped navigation */
+    height: calc(100vh - 120px);
   }
 
   .nav-container {
     padding: 5px 0;
-    height: 50px;
-    display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: space-around;
-    flex-wrap: nowrap;
   }
 
   .Links {
-    padding: 0;
-    font-size: 1em;
-    min-width: 60px;
-    flex: 1;
+    padding: 8px 15px;
+    font-size: 0.9em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -232,7 +221,7 @@ body {
   /* iPhone-specific adjustments */
   @media screen and (min-device-width: 375px) and (max-device-width: 926px) and (-webkit-min-device-pixel-ratio: 3) {
     .App {
-      margin-top: 60px;
+      margin-top: 120px;
     }
 
     .App-title {
