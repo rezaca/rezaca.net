@@ -6,6 +6,8 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.4;
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
 }
 
 .App {
@@ -27,6 +29,7 @@ body {
   justify-content: center;
   padding: 10px 0;
   z-index: 1000;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .Links {
@@ -105,16 +108,19 @@ body {
 @media (max-width: 768px) {
   .nav-container {
     flex-wrap: wrap;
+    justify-content: space-around;
   }
-  
+
   .Links {
     padding: 10px 20px;
+    min-width: 60px;
   }
-  
+
   .chatbot-wrapper {
     height: calc(100vh - 230px);
+    max-width: 90%;
   }
-  
+
   .App-title {
     font-size: 1.3em;
     margin-bottom: 8px;
@@ -123,32 +129,45 @@ body {
 
 @media (max-width: 480px) {
   .App {
-    margin-top: 120px; /* More space for the wrapped navigation */
-    height: calc(100vh - 120px);
+    margin-top: 100px; /* More space for the wrapped navigation */
+    height: calc(100vh - 100px);
   }
-  
+
   .nav-container {
     padding: 5px 0;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
-  
+
   .Links {
-    padding: 8px 15px;
+    padding: 10px;
     font-size: 0.9em;
+    min-width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
   }
-  
+
   .chatbot-wrapper {
     height: calc(100vh - 250px);
     min-height: 250px;
+    max-width: 95%;
   }
-  
+
   .App-header {
     padding: 15px 10px;
   }
-  
+
   .App-intro {
     font-size: medium;
     display: block;
     margin: 10px 0;
+    padding: 0 15px;
+  }
+
+  /* Improve scrolling on mobile */
+  .content-container {
+    -webkit-overflow-scrolling: touch;
   }
 }
