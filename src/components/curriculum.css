@@ -11,6 +11,14 @@
   height: 100%;
 }
 
+.page-title {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+  width: 80%;
+}
+
 .cv-loading {
   display: flex;
   flex-direction: column;
@@ -62,10 +70,11 @@
   display: flex;
   justify-content: center;
   overflow: hidden; /* Prevent scrollbars on the container */
-  height: 65vh; /* Use viewport height for better responsiveness */
+  height: 70vh; /* Use viewport height for better responsiveness */
   min-height: 500px; /* Minimum height to ensure visibility */
   max-height: 700px; /* Maximum height on larger screens */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
 .pdf-iframe {
@@ -83,6 +92,7 @@
   padding: 0.5rem;
   background-color: white;
   border: 1px solid #eee;
+  border-radius: 4px;
   margin-top: 0.5rem;
   gap: 1rem;
 }
@@ -99,12 +109,15 @@
   font-size: 0.9rem;
   text-decoration: none;
   border-radius: 4px;
-  transition: background-color 0.2s;
+  transition:
+    background-color 0.2s,
+    transform 0.1s;
 }
 
 .cv-view-button:hover,
 .cv-download-button:hover {
   background-color: #eee;
+  transform: translateY(-1px);
 }
 
 /* Add responsive styles for mobile devices */
@@ -112,6 +125,11 @@
   .cv-container {
     padding: 0.75rem 0.5rem;
     height: auto;
+  }
+
+  .page-title {
+    margin-bottom: 1rem;
+    width: 90%;
   }
 
   .cv-document {
@@ -133,10 +151,18 @@
     margin-top: 0.5rem;
   }
 
+  .page-title {
+    margin: 0.5rem 0 1rem;
+    width: 100%;
+    padding-bottom: 0.5rem;
+  }
+
   .cv-document {
-    height: 60vh;
+    height: 60vh; /* Taller on phones */
     min-height: 350px;
     border-radius: 4px;
+    margin-bottom: 0.75rem;
+    border-width: 1px;
   }
 
   .cv-view-button,
@@ -152,6 +178,7 @@
     width: 100%;
     padding: 0.5rem 0.25rem;
     gap: 0.5rem;
+    margin-top: 0.25rem;
   }
 
   /* Add a little breathing room at the bottom on mobile */

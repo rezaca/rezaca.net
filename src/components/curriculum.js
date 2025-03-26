@@ -13,6 +13,30 @@ class Curriculum extends Component {
     setTimeout(() => {
       this.setState({ isLoading: false });
     }, 500);
+
+    // Force iframe refresh if it doesn't load properly
+    this.iframeTimeout = setTimeout(() => {
+      const iframe = document.querySelector('.pdf-iframe');
+      if (
+        iframe &&
+        iframe.contentDocument &&
+        iframe.contentDocument.body &&
+        iframe.contentDocument.body.innerHTML === ''
+      ) {
+        // If iframe is empty, refresh it
+        const currentSrc = iframe.src;
+        iframe.src = '';
+        setTimeout(() => {
+          iframe.src = currentSrc;
+        }, 100);
+      }
+    }, 2000);
+  }
+
+  componentWillUnmount() {
+    if (this.iframeTimeout) {
+      clearTimeout(this.iframeTimeout);
+    }
   }
 
   render() {
@@ -21,6 +45,8 @@ class Curriculum extends Component {
 
     return (
       <div className="cv-container">
+        <h1 className="page-title">Curriculum Vitae</h1>
+
         {isLoading && (
           <div className="cv-loading">
             <div className="cv-spinner"></div>
@@ -30,7 +56,7 @@ class Curriculum extends Component {
 
         <div className="cv-document">
           <iframe
-            src={`${pdfUrl}#toolbar=0&navpanes=0`}
+            src={`${pdfUrl}#toolbar=0&navpanes=0&view=FitH`}
             title="Resume"
             className="pdf-iframe"
             loading="lazy"

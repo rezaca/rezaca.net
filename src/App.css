@@ -72,6 +72,7 @@ body {
   align-items: center;
   height: calc(100vh - 100px);
   padding: 10px;
+  width: 100%;
 }
 
 /* CV route */
@@ -93,9 +94,38 @@ body {
   margin-bottom: 0;
 }
 
-.App-title {
-  font-size: 1.5em;
-  margin-bottom: 10px;
+/* Standardized title styles */
+.App-title,
+.About-title,
+.Contact-title,
+h1,
+.page-title {
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 20px;
+  color: #333;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+}
+
+/* Standardized subtitle styles */
+h2,
+.section-title,
+.About-subtitle {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin: 15px 0;
+  color: #444;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
+}
+
+/* Standardized smaller heading styles */
+h3,
+.sub-section-title {
+  font-size: 1.25rem;
+  font-weight: normal;
+  margin: 12px 0;
+  color: #555;
+  font-family: Cochin, Georgia, 'Times New Roman', serif;
 }
 
 .App-intro {
@@ -165,9 +195,27 @@ body {
     max-width: 90%;
   }
 
-  .App-title {
-    font-size: 1.3em;
-    margin-bottom: 8px;
+  /* Tablet responsive heading sizes */
+  .App-title,
+  .About-title,
+  .Contact-title,
+  h1,
+  .page-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  h2,
+  .section-title,
+  .About-subtitle {
+    font-size: 1.3rem;
+    margin: 12px 0;
+  }
+
+  h3,
+  .sub-section-title {
+    font-size: 1.15rem;
+    margin: 10px 0;
   }
 }
 
@@ -208,9 +256,27 @@ body {
     margin-top: 10px;
   }
 
-  .App-title {
-    font-size: 1.7em;
-    margin: 20px 0 5px;
+  /* Mobile responsive heading sizes */
+  .App-title,
+  .About-title,
+  .Contact-title,
+  h1,
+  .page-title {
+    font-size: 1.6rem;
+    margin: 20px 0 10px;
+  }
+
+  h2,
+  .section-title,
+  .About-subtitle {
+    font-size: 1.25rem;
+    margin: 10px 0;
+  }
+
+  h3,
+  .sub-section-title {
+    font-size: 1.1rem;
+    margin: 8px 0;
   }
 
   .App-intro {

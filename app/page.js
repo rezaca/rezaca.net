@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 // Styles loaded from globals.css
 import dynamic from 'next/dynamic';
@@ -12,6 +12,25 @@ const ChatBot = dynamic(
 );
 
 export default function Home() {
+  // Add effect to adjust viewport for better mobile display
+  useEffect(() => {
+    // Set viewport meta tag for better mobile experience
+    const metaViewport = document.querySelector('meta[name=viewport]');
+    if (metaViewport) {
+      metaViewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes';
+    }
+    
+    // Optional: scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
+    return () => {
+      // Restore original viewport if it was modified
+      if (metaViewport) {
+        metaViewport.content = 'width=device-width, initial-scale=1.0';
+      }
+    };
+  }, []);
+
   return (
     <div className="App">
       <div className="nav-container">
