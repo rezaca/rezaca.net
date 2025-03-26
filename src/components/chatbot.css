@@ -192,27 +192,38 @@
 }
 
 @media (max-width: 480px) {
-  .chatbot-header,
+  .chatbot-container {
+    border-radius: 12px;
+  }
+
+  .chatbot-header {
+    padding: 12px;
+  }
+
+  .chatbot-title {
+    font-size: 1.1em;
+  }
+
   .chatbot-input {
-    padding: 8px 10px;
+    padding: 10px 12px;
   }
 
   .chat-input {
     font-size: 16px; /* Prevent zoom on iOS */
-    padding: 8px 10px;
+    padding: 10px 12px;
     border-radius: 18px;
-    height: 38px;
+    height: 40px;
   }
 
   .chat-send-button {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    margin-left: 8px;
+    margin-left: 10px;
   }
 
   .chatbot-footer {
-    font-size: 10px;
+    font-size: 11px;
     padding: 8px 5px;
   }
 
@@ -228,5 +239,22 @@
 
   .message.bot .message-bubble {
     border-top-left-radius: 4px;
+  }
+
+  /* iPhone-specific adjustments */
+  @media screen and (min-device-width: 375px) and (max-device-width: 926px) and (-webkit-min-device-pixel-ratio: 3) {
+    .chat-input {
+      font-size: 16px;
+      height: 44px;
+    }
+
+    .chat-send-button {
+      width: 44px;
+      height: 44px;
+    }
+
+    .chatbot-messages {
+      padding: 15px;
+    }
   }
 }
