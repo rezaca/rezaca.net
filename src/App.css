@@ -12,7 +12,7 @@ body {
 
 .App {
   text-align: center;
-  margin-top: 80px; /* Original margin */
+  margin-top: 80px; /* Original margin for desktop */
   height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
@@ -172,19 +172,23 @@ body {
 
 @media (max-width: 480px) {
   .App {
-    margin-top: 120px; /* More space for the wrapped navigation */
-    height: calc(100vh - 120px);
+    margin-top: 70px; /* Reduced margin for mobile */
+    height: calc(100vh - 70px);
   }
 
   .nav-container {
     padding: 5px 0;
-    flex-wrap: wrap;
+    height: 60px; /* Fixed height for mobile navigation */
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping on small screens */
     justify-content: space-around;
+    align-items: center;
   }
 
   .Links {
-    padding: 8px 15px;
+    padding: 0;
     font-size: 0.9em;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -198,18 +202,18 @@ body {
   }
 
   .App-header {
-    padding: 20px 10px 0;
+    padding: 10px 10px 0;
   }
 
   .App-title {
     font-size: 1.7em;
-    margin: 0 0 10px;
+    margin: 0 0 5px;
   }
 
   .App-intro {
     font-size: medium;
     display: block;
-    margin: 10px 0 20px;
+    margin: 5px 0 15px;
     padding: 0 15px;
   }
 
@@ -221,16 +225,16 @@ body {
   /* iPhone-specific adjustments */
   @media screen and (min-device-width: 375px) and (max-device-width: 926px) and (-webkit-min-device-pixel-ratio: 3) {
     .App {
-      margin-top: 120px;
+      margin-top: 70px; /* Consistent with other mobile devices */
     }
 
     .App-title {
       font-size: 1.6em;
-      margin-top: 10px;
+      margin-top: 5px;
     }
 
     .App-intro {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
   }
 }
