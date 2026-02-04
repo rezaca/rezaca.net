@@ -1,54 +1,38 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import '../../src/App.css';
 import About from '../../src/components/about.js';
 
 export default function AboutPage() {
-  // Add effect to adjust viewport for better mobile display
-  useEffect(() => {
-    // Set viewport meta tag for better mobile experience
-    const metaViewport = document.querySelector('meta[name=viewport]');
-    if (metaViewport) {
-      metaViewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes';
-    }
-    
-    // Optional: scroll to top when component mounts
-    window.scrollTo(0, 0);
-    
-    return () => {
-      // Restore original viewport if it was modified
-      if (metaViewport) {
-        metaViewport.content = 'width=device-width, initial-scale=1.0';
-      }
-    };
-  }, []);
+  const pathname = usePathname();
 
   return (
     <div className="App">
-      <div className="nav-container">
+      <nav className="nav-container" aria-label="Main navigation">
         <span className="Links">
-          <Link href="/" style={{ textDecoration: 'none', color: 'gray' }}>
+          <Link href="/" aria-current={pathname === '/' ? 'page' : undefined}>
             Home
           </Link>
         </span>
         <span className="Links">
-          <Link href="/about" style={{ textDecoration: 'none', color: 'gray' }}>
+          <Link href="/about" aria-current={pathname === '/about' ? 'page' : undefined}>
             About
           </Link>
         </span>
         <span className="Links">
-          <Link href="/contact" style={{ textDecoration: 'none', color: 'gray' }}>
+          <Link href="/contact" aria-current={pathname === '/contact' ? 'page' : undefined}>
             Contact
           </Link>
         </span>
         <span className="Links">
-          <Link href="/cv" style={{ textDecoration: 'none', color: 'gray' }}>
+          <Link href="/cv" aria-current={pathname === '/cv' ? 'page' : undefined}>
             CV
           </Link>
         </span>
-      </div>
+      </nav>
       
       <div className="content-container">
         <div className="page-container">

@@ -6,6 +6,7 @@ import './curriculum.css';
 class Curriculum extends Component {
   state = {
     isLoading: true,
+    hasError: false,
   };
 
   componentDidMount() {
@@ -39,8 +40,12 @@ class Curriculum extends Component {
     }
   }
 
+  handleIframeError = () => {
+    this.setState({ isLoading: false, hasError: true });
+  };
+
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, hasError } = this.state;
     const pdfUrl = '/resume.pdf';
 
     return (
@@ -54,6 +59,15 @@ class Curriculum extends Component {
           </div>
         )}
 
+        {hasError && (
+          <div className="cv-error">
+            <p>
+              Unable to load the resume preview. Please use the buttons below to
+              view or download.
+            </p>
+          </div>
+        )}
+
         <div className="cv-document">
           <iframe
             src={`${pdfUrl}#toolbar=0&navpanes=0&view=FitH`}
@@ -61,6 +75,7 @@ class Curriculum extends Component {
             className="pdf-iframe"
             loading="lazy"
             onLoad={() => this.setState({ isLoading: false })}
+            onError={this.handleIframeError}
           />
         </div>
 

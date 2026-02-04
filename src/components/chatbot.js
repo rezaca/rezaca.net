@@ -88,8 +88,7 @@ class ChatBot extends Component {
       inputLower.includes('email') ||
       inputLower.includes('phone')
     ) {
-      botResponse =
-        'You can reach Renato at renato@rezaca.net or 919-803-9049.';
+      botResponse = 'You can reach Renato at renato@rezaca.net.';
     } else if (
       inputLower.includes('hello') ||
       inputLower.includes('hi') ||
@@ -215,8 +214,12 @@ class ChatBot extends Component {
         </div>
 
         <form onSubmit={this.handleSubmit} className="chatbot-input">
+          <label htmlFor="chat-input" className="visually-hidden">
+            Ask a question about Renato
+          </label>
           <input
             type="text"
+            id="chat-input"
             ref={this.chatInputRef}
             value={this.state.userInput}
             onChange={this.handleInputChange}
